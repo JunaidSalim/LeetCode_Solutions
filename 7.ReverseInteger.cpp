@@ -1,4 +1,5 @@
-class Solution {
+c
+lass Solution {
 public:
     int reverse(int x) {
         long int num=0;
