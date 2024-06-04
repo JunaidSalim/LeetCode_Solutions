@@ -1,5 +1,7 @@
 class Solution(object):
     def singleNumber(self, nums):
-        for i in nums:
-            if nums.count(i) == 1:
-                return i
+        hashmap = Counter(nums)
+        for x in hashmap:
+            if hashmap[x]==1:
+                return x
+        
