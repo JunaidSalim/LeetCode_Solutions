@@ -1,17 +1,13 @@
-class Solution(object):
-    def lengthOfLongestSubstring(self, s):
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
         n = len(s)
-        if n==0: return 0
-        if n==1: return 1
-        result = []
-        for i in range(n):
-            temp = []
-            for j in range(i,n):
-                if s[j] not in temp:
-                    temp.append(s[j])
-                else:
-                    break
-            if len(temp)>len(result):
-                result = []
-                result = temp
-        return len(result)
+        left,right=0,0
+        mpp=[-1] * 256
+        count= 0
+        while right<n:
+            if mpp[ord(s[right])] != -1:
+                left = max(left,mpp[ord(s[right])]+1)
+            mpp[ord(s[right])] = right
+            count = max(count,right-left+1)
+            right+=1
+        return count
